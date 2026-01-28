@@ -1,1 +1,131 @@
+ena
+conf t
+
+# Đặt tên cho Switch
+host SW_Acc_1
+
+# Cấu hình VLAN 99 cho quản lý
+vlan 99
+  name management
+
+# Cấu hình Trunk Ports (fa0/4 - fa0/5)
+int range fa0/4 - 5
+  switchport mode trunk
+  switchport trunk native vlan 99
+  channel-group 1 mode active
+  no shutdown
+
+# Cấu hình Port-channel 1
+int po1
+  switchport mode trunk
+  switchport trunk native vlan 99
+  no shutdown
+
+# Cấu hình Trunk Ports (fa0/6 - fa0/7)
+int range fa0/6 - 7
+  switchport mode trunk
+  switchport trunk native vlan 99
+  channel-group 2 mode active
+  no shutdown
+
+# Cấu hình Port-channel 2
+int po2
+  switchport mode trunk
+  switchport trunk native vlan 99
+  no shutdown
+
+# Cấu hình VLANs
+vlan 20
+  name HR
+
+vlan 30
+  name KE-TOAN
+
+vlan 40
+  name GUEST
+
+# Cấu hình các cổng Access cho từng VLAN
+int fa0/3
+  switchport mode access
+  switchport access vlan 20
+
+int fa0/2
+  switchport mode access
+  switchport access vlan 30
+
+int fa0/1
+  switchport mode access
+  switchport access vlan 40
+
+# Cấu hình Port Fast và BPDU Guard cho các cổng Access
+int range fa0/1 - 24
+  switchport mode access
+  spanning-tree portfast
+  spanning-tree bpduguard enable
+
+# Lưu cấu hình
+end
+wr
+
+
+ena
+conf t
+
+# Đặt tên cho Switch
+host SW_Acc_2
+
+# Cấu hình VLAN 99 cho quản lý
+vlan 99
+  name management
+
+# Cấu hình Trunk Ports (fa0/3 - fa0/4)
+int range fa0/3 - 4
+  switchport mode trunk
+  switchport trunk native vlan 99
+  channel-group 1 mode active
+  no shutdown
+
+# Cấu hình Port-channel 1
+int po1
+  switchport mode trunk
+  switchport trunk native vlan 99
+  no shutdown
+
+# Cấu hình Trunk Ports (fa0/5 - fa0/6)
+int range fa0/5 - 6
+  switchport mode trunk
+  switchport trunk native vlan 99
+  channel-group 2 mode active
+  no shutdown
+
+# Cấu hình Port-channel 2
+int po2
+  switchport mode trunk
+  switchport trunk native vlan 99
+  no shutdown
+
+# Cấu hình VLANs
+vlan 10
+  name IT
+
+vlan 50
+  name GUEST
+
+# Cấu hình các cổng Access cho từng VLAN
+int fa0/1
+  switchport mode access
+  switchport access vlan 50
+
+int fa0/2
+  switchport mode access
+  switchport access vlan 10
+
+# Cấu hình Port Fast cho các cổng Access
+int range fa0/1 - 24
+  switchport mode access
+  no shutdown
+
+# Lưu cấu hình
+end
+wr
 
