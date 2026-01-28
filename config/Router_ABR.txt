@@ -1,0 +1,60 @@
+ena
+conf t
+
+# Đặt tên cho Router
+host ABR
+
+# Kích hoạt định tuyến IPv6
+ipv6 unicast-routing
+
+# Cấu hình Interface se0/3/1 (Kết nối đến mạng Internet hoặc các mạng bên ngoài)
+int se0/3/1
+  ip address 203.0.113.2 255.255.255.224
+  ipv6 address 2001:db8:acad:99::2/64
+  ipv6 address fe80:4::1 link-local
+  no shutdown
+
+# Cấu hình Interface se0/3/0 (Kết nối tới mạng trong nội bộ)
+int se0/3/0
+  ip address 203.0.114.1 255.255.255.252
+  ipv6 address 2001:db8:acad:100::1/64
+  ipv6 address fe80:5::1 link-local
+  no shutdown
+
+# Cấu hình Route Mặc Định cho IPv4 và IPv6
+ip route 0.0.0.0 0.0.0.0 se0/3/0
+ipv6 route ::/0 2001:db8:acad:100::2
+
+# Cấu hình Route Tĩnh cho mạng LAN (192.168.0.0/16)
+ip route 192.168.0.0 255.255.0.0 203.0.113.1
+
+# Cấu hình Access Control List (ACL) cho NAT (cấu hình mạng bên trong)
+ip access-list standard ACL_NAT_INSIDE
+  permit 192.168.0.0 0.0.255.255
+
+# Cấu hình NAT (Network Address Translation) cho mạng nội bộ
+ip nat inside source list ACL_NAT_INSIDE interface se0/3/0 overload
+
+# Cấu hình NAT cho các interface: ngoài và trong
+int se0/3/0
+  ip nat outside
+
+int se0/3/1
+  ip nat inside
+
+# Cấu hình ACL Extended để kiểm soát truy cập từ Internet vào DMZ
+ip access-list extended INTERNET_TO_DMZ
+  permit tcp any host 203.0.113.10 eq 80
+  permit icmp any host 203.0.113.10
+  deny ip any any
+
+# Áp dụng ACL INTERNET_TO_DMZ lên interface se0/3/0 (Kết nối Internet)
+int se0/3/0
+  ip access-group INTERNET_TO_DMZ in
+
+# Cấu hình NAT Static cho truy cập từ Internet vào một máy chủ trong DMZ
+ip nat inside source static 192.168.6.4 203.0.113.10
+
+# Lưu cấu hình
+end
+wr
