@@ -1,0 +1,102 @@
+ena
+conf t
+
+# Đặt tên cho Router
+host Router_DMZ
+
+# Cấu hình Interface g0/0 (Kết nối với mạng nội bộ)
+int g0/0
+  ip address 10.0.0.2 255.255.255.252
+  ipv6 address 2001:db8:acad:7a::1/64
+  ipv6 address fe80:2::1 link-local
+  no shutdown
+
+# Cấu hình Interface g0/1 (Kết nối với mạng DMZ)
+int g0/1
+  ip address 10.1.0.2 255.255.255.252
+  ipv6 address 2001:db8:acad:7b::1/64
+  ipv6 address fe80:3::1 link-local
+  no shutdown
+
+# Cấu hình Interface Serial 0/3/1 (Kết nối với Internet)
+int se0/3/1
+  ip address 203.0.113.1 255.255.255.224
+  ipv6 address 2001:db8:acad:99::1/64
+  ipv6 address fe80:4::1 link-local
+  no shutdown
+
+# Cấu hình Interface g0/2 (Kết nối mạng LAN)
+int g0/2
+  ip address 192.168.6.1 255.255.255.248
+  ipv6 address 2001:db8:acad:7c::1/64
+  ipv6 address fe80:1::1 link-local
+  no shutdown
+
+# Kích hoạt định tuyến IPv6
+ipv6 unicast-routing
+
+# Cấu hình OSPF (Open Shortest Path First)
+router ospf 10
+  default-information originate
+
+# Cấu hình OSPF trên các interface
+interface g0/0
+  ip ospf 10 area 0
+
+interface g0/1
+  ip ospf 10 area 0
+
+interface g0/2
+  ip ospf 10 area 0
+
+# Cấu hình OSPF trên Interface Serial 0/3/1
+int se0/3/1
+  ip ospf 10 area 0
+  ip route 0.0.0.0 0.0.0.0 203.0.113.2
+  ipv6 route ::/0 2001:db8:acad:99::2
+
+# Cấu hình Access List LAN_TO_DMZ (Điều chỉnh quyền truy cập từ LAN đến DMZ)
+ip access-list extended LAN_TO_DMZ
+  ! DHCP
+  permit udp any host 192.168.6.2 eq 67
+  permit udp host 192.168.6.2 any eq 68
+  ! DNS
+  permit udp any host 192.168.6.3 eq 53
+  permit tcp any host 192.168.6.3 eq 53
+  ! WEB
+  permit tcp any host 192.168.6.4 eq 80
+  ! Chặn LAN truy cập khác vào DMZ
+  deny ip 192.168.0.0 0.0.255.255 192.168.6.0 0.0.0.7
+  permit ip any any
+
+# Áp dụng ACL LAN_TO_DMZ lên interface g0/2 (mạng LAN)
+int g0/2
+  ip access-group LAN_TO_DMZ out
+
+# Cấu hình Access List DMZ_TO_LAN (Điều chỉnh quyền truy cập từ DMZ đến LAN)
+ip access-list extended DMZ_TO_LAN
+  ! DHCP reply
+  permit udp host 192.168.6.2 any eq 68
+  ! Chặn DMZ vào LAN
+  deny ip 192.168.6.0 0.0.0.7 192.168.0.0 0.0.255.255
+  permit ip any any
+
+# Áp dụng ACL DMZ_TO_LAN vào các interface g0/1 và g0/0 (mạng DMZ và mạng nội bộ)
+int g0/1
+  ip access-group DMZ_TO_LAN in
+
+int g0/0
+  ip access-group DMZ_TO_LAN in
+
+# Cấu hình Access List INTERNET_TO_DMZ (Chặn lưu lượng Internet vào DMZ)
+ip access-list extended INTERNET_TO_DMZ
+  permit ip any any
+  deny ip any 192.168.6.0 0.0.0.7
+
+# Áp dụng ACL INTERNET_TO_DMZ vào interface se0/3/1 (Kết nối Internet)
+int se0/3/1
+  ip access-group INTERNET_TO_DMZ in
+
+# Lưu cấu hình
+end
+wr
