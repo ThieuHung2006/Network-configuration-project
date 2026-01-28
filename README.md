@@ -21,3 +21,12 @@ This project simulates a network topology for a corporate enterprise using a 3-l
 1. Clone the repository.
 2. Load the configuration files on appropriate network devices.
 3. Implement the setup and test the network.
+
+
+## Network Topology
+
+### 1. Network Topology Diagram
+This diagram shows the full enterprise network using a 3-tier architecture
+(Core – Distribution – Access), including DMZ and ISP connectivity.
+
+![Network Topology Diagram](images/network_topology.png)
