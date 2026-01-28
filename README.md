@@ -25,9 +25,16 @@ This project simulates a network topology for a corporate enterprise using a 3-l
 
 ## Network Topology
 
-### 1. Network Topology Diagram
+### Network Topology Diagram
 This diagram shows the full enterprise network using a 3-tier architecture
 (Core – Distribution – Access), including DMZ and ISP connectivity.
 
 ![Network Topology Diagram 1](images/network_topology1.png)
 ![Network Topology Diagram 2](images/network_topology2.png)
+
+## Wireless Network
+
+Enterprise wireless access is implemented using a WLC with AAA authentication.
+
+📄 Detailed wireless configuration and design:
+- [Wireless Design Documentation](docs/wireless_design.md)
