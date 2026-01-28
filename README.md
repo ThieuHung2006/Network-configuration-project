@@ -29,4 +29,5 @@ This project simulates a network topology for a corporate enterprise using a 3-l
 This diagram shows the full enterprise network using a 3-tier architecture
 (Core – Distribution – Access), including DMZ and ISP connectivity.
 
-![Network Topology Diagram](images/network_topology1.png)
+![Network Topology Diagram 1](images/network_topology1.png)
+![Network Topology Diagram 2](images/network_topology2.png)
