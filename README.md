@@ -34,7 +34,7 @@ This diagram shows the full enterprise network using a 3-tier architecture
 
 ## Wireless Network
 
-Enterprise wireless access is implemented using a WLC with AAA authentication.
+Enterprise wireless access is implemented using a WLC with AAA/PSK authentication.
 
 📄 Detailed wireless configuration and design:
 - [Wireless Design Documentation](docs/wireless_design.md)
