@@ -26,9 +26,12 @@ in a realistic corporate environment.
   complete enterprise network topology and configurations
 
 ## How to Use
-1. Clone the repository.
-2. Load the configuration files onto the corresponding network devices.
-3. Verify connectivity, routing, security policies, and services.
+1. Clone or download this repository to your local machine.
+2. Open the `Network Configuration Project.pkt` file using Cisco Packet Tracer.
+3. Load the configuration files from the `configs/` folder onto their
+   corresponding routers and switches.
+4. Verify network connectivity, routing, security policies, wireless access,
+   and infrastructure services as documented in the `docs/` folder.
 
 ## Network Topology
 
