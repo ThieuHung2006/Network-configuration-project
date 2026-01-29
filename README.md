@@ -34,7 +34,17 @@ This diagram shows the full enterprise network using a 3-tier architecture
 
 ## Wireless Network
 
-Enterprise wireless access is implemented using a WLC with AAA/PSK authentication.
+The wireless network is centrally managed by a Wireless LAN Controller (WLC),
+supporting secure enterprise authentication and controlled guest access.
 
-📄 Detailed wireless configuration and design:
+📄 Detailed wireless architecture and configuration:
 - [Wireless Design Documentation](docs/wireless_design.md)
+## Access Control Lists (ACL)
+
+Access Control Lists (ACLs) are implemented to restrict management access,
+isolate guest users, and control traffic flow between internal networks,
+the DMZ, and the Internet.
+
+📄 Detailed ACL policies and verification:
+- [Security & Access Control Documentation](docs/security_verification.md)
+
