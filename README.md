@@ -1,36 +1,41 @@
 # Network Configuration Project
 
-This project simulates a network topology for a corporate enterprise using a 3-layer model: Core, Distribution, and Access. It includes configuration of routing protocols, VLANs, inter-VLAN routing, and more.
+This project simulates an enterprise network topology based on a 3-layer
+architecture (Core, Distribution, and Access). The design demonstrates
+routing, segmentation, security, high availability, and enterprise services
+in a realistic corporate environment.
 
-## Network Devices Configured:
+## Network Devices Configured
 - **Core Routers**: Core_1, Core_2
-- **Access Routers**: Router_DMZ
+- **DMZ Router**: Router_DMZ
 - **ISP Router**: ISP
 
 ## Project Features
-- **OSPF Configuration** for dynamic routing
-- **VLAN Configuration** for network segmentation
-- **DHCP Setup** for automatic IP address assignment
-- **Basic Security** using **ACLs**
+- **OSPF** for dynamic and scalable routing
+- **VLANs & Inter-VLAN Routing** for network segmentation
+- **DHCP & DNS Services** deployed in the DMZ
+- **Security Controls** using ACLs and NAT
+- **High Availability** with HSRP, STP, and EtherChannel
+- **Enterprise Wireless** using WLC with WPA2-Enterprise and Guest access
 
 ## Folder Structure
-- `configs/`: Contains all configuration files for routers and switches
-- `images/`: Contains network topology diagrams
+- `configs/`: Device configuration files (routers & switches)
+- `docs/`: Design and verification documentation
+- `images/`: Network topology diagrams and verification screenshots
 
 ## How to Use
 1. Clone the repository.
-2. Load the configuration files on appropriate network devices.
-3. Implement the setup and test the network.
-
+2. Load the configuration files onto the corresponding network devices.
+3. Verify connectivity, routing, security policies, and services.
 
 ## Network Topology
 
-### Network Topology Diagram
-This diagram shows the full enterprise network using a 3-tier architecture
-(Core – Distribution – Access), including DMZ and ISP connectivity.
+The diagrams below illustrate the complete enterprise network design using a
+3-tier architecture, including DMZ and ISP connectivity.
 
 ![Network Topology Diagram 1](images/network_topology1.png)
 ![Network Topology Diagram 2](images/network_topology2.png)
+
 
 ## Wireless Network
 
