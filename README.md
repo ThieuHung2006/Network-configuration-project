@@ -62,3 +62,15 @@ resilience.
 📄 Detailed configuration and verification:
 - [High Availability & Redundancy Documentation](docs/high_availability.md)
 
+## Routing & Internet Connectivity
+
+Dynamic routing and Internet connectivity are implemented to ensure full
+reachability between internal networks, the DMZ, and external networks.
+
+- OSPF is used as the interior gateway protocol across Core, Distribution, and DMZ
+- NAT is configured at the network edge to provide Internet access for internal users
+- Traffic flow is verified using routing tables and NAT translation entries
+
+📄 Detailed routing and NAT verification:
+- [Routing & NAT Documentation](docs/routing_nat_verification.md)
+
