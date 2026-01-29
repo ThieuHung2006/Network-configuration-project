@@ -95,3 +95,24 @@ Core enterprise services are deployed in the DMZ to support network operations.
 
 📄 Detailed service verification:
 - [Infrastructure Services Documentation](docs/infrastructure_services_verification.md)
+
+## Conclusion
+
+In this project, I designed and implemented a complete enterprise network based
+on a 3-tier architecture (Core, Distribution, Access) with integrated DMZ and ISP
+connectivity.
+
+Key tasks completed in this project include:
+- Designing an enterprise network topology with Core, Distribution, and Access layers
+- Implementing OSPF for dynamic and scalable routing across the network
+- Configuring VLANs and inter-VLAN routing for network segmentation
+- Deploying security controls using ACLs, NAT, and a dedicated DMZ
+- Implementing high availability with HSRP, Spanning Tree (RSTP), and EtherChannel
+- Deploying enterprise wireless using a WLC with WPA2-Enterprise and guest access
+- Configuring infrastructure services including DHCP, DNS, Web, and AAA (RADIUS)
+- Verifying all configurations through CLI outputs and service testing
+
+This project reflects hands-on experience with enterprise network design,
+configuration, and verification, and serves as a practical portfolio for
+Fresher or Junior Network Engineer positions.
+
