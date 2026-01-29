@@ -4,7 +4,7 @@ The wireless network was successfully tested using a centralized Wireless LAN
 Controller (WLC) with two security models: WPA2-Enterprise for internal users and
 WPA2-Personal for guest access.
 
-![WLC Overview](images/wireless_topology4.png)
+![WLC Overview](../images/wireless_topology4.png)
 
 ---
 
@@ -14,14 +14,14 @@ The secure SSID uses WPA2-Enterprise (802.1X), where user credentials are valida
 by the AAA (RADIUS) server before network access is granted.
 
 - SSID discovery by wireless client  
-![SSID Scan](images/wireless_topology3.png)
+![SSID Scan](../images/wireless_topology3.png)
 
 - Authentication via AAA server  
-![AAA Authentication](images/wireless_topology1.png)
-![AAA Authentication Success](images/wireless_topology2.png)
+![AAA Authentication](../images/wireless_topology1.png)
+![AAA Authentication Success](../images/wireless_topology2.png)
 
 - Successful IP address assignment  
-![IP Assignment](images/wireless_topology5.png)
+![IP Assignment](../images/wireless_topology5.png)
 
 After authentication, the client is assigned to the appropriate VLAN and receives
 valid IPv4 and IPv6 addresses via DHCP.
@@ -33,7 +33,7 @@ valid IPv4 and IPv6 addresses via DHCP.
 A guest wireless SSID is deployed using WPA2-Personal (Pre-Shared Key) and mapped
 to **VLAN 40**.
 
-![WPA2-Personal Connection](images/wireless_topology6.png)
+![WPA2-Personal Connection](../images/wireless_topology6.png)
 
 Guest clients successfully connect using the shared key, obtain IP addresses via
 DHCP, and remain isolated from internal enterprise networks.
