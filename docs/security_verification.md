@@ -64,6 +64,7 @@ networks.
 
 ---
 
-These verification results confirm that management access, guest isolation,
-DMZ protection, and Internet traffic control are implemented in accordance
-with enterprise security best practices.
+These verification results confirm that management access control, guest
+segmentation, DMZ protection, and Internet traffic filtering are implemented
+following enterprise security best practices and the principle of least privilege.
+
