@@ -8,8 +8,8 @@ Remote management access is strictly controlled using SSH and ACLs.
   are explicitly denied SSH access.
 - SSH authentication is enforced using local user credentials.
 
-![SSH Login Verification](images/ACL_SSH1.png)
-![SSH Successful Access](images/ACL_SSH2.png)
+![SSH Login Verification](../images/ACL_SSH1.png)
+![SSH Successful Access](../images/ACL_SSH2.png)
 
 This ensures that only authorized IT administrators can manage network devices.
 
@@ -39,8 +39,8 @@ configured on the DMZ router:
 - All permitted traffic is explicitly defined, following the principle
   of least privilege.
   
-![ACL_DMZ](images/ACL_topology1.png)
-![ACL_DMZ](images/ACL_topology3.png)
+![ACL_DMZ](../images/ACL_topology1.png)
+![ACL_DMZ](../images/ACL_topology3.png)
 
 This ensures secure communication between internal users and DMZ servers.
 
@@ -57,7 +57,7 @@ the enterprise network:
   reach approved DMZ services.
 - Direct Internet access to internal LAN networks is blocked.
 
-![SSH Login Verification](images/ACL_topology2.png)
+![SSH Login Verification](../images/ACL_topology2.png)
 
 This provides a secure boundary between the enterprise network and external
 networks.
