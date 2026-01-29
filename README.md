@@ -74,3 +74,14 @@ reachability between internal networks, the DMZ, and external networks.
 📄 Detailed routing and NAT verification:
 - [Routing & NAT Documentation](docs/routing_nat_verification.md)
 
+## Infrastructure Services
+
+Core enterprise services are deployed in the DMZ to support network operations.
+
+- DHCP for dynamic IP assignment
+- DNS for internal name resolution
+- AAA (RADIUS) for secure wireless authentication
+- Web services published via static NAT
+
+📄 Detailed service verification:
+- [Infrastructure Services Documentation](docs/infrastructure_services_verification.md)
