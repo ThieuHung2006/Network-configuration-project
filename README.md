@@ -48,3 +48,17 @@ the DMZ, and the Internet.
 📄 Detailed ACL policies and verification:
 - [Security & Access Control Documentation](docs/security_verification.md)
 
+## High Availability & Layer 2 Redundancy
+
+High availability is implemented at the distribution layer using first-hop
+redundancy and loop prevention mechanisms to ensure network stability and
+resilience.
+
+- HSRP is used to provide gateway redundancy for all VLANs
+- EtherChannel (LACP) is deployed to increase bandwidth and link redundancy
+- Spanning Tree Protocol (RSTP) prevents Layer 2 loops while maintaining
+  fast convergence
+
+📄 Detailed configuration and verification:
+- [High Availability & Redundancy Documentation](docs/high_availability.md)
+
