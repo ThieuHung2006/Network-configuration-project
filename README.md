@@ -22,6 +22,8 @@ in a realistic corporate environment.
 - `configs/`: Device configuration files (routers & switches)
 - `docs/`: Design and verification documentation
 - `images/`: Network topology diagrams and verification screenshots
+- `Network Configuration Project.pkt`: Cisco Packet Tracer file containing the
+  complete enterprise network topology and configurations
 
 ## How to Use
 1. Clone the repository.
